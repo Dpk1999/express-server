@@ -1,4 +1,4 @@
-5 feature of VS- Code 
+#5 feature of VS- Code 
 Command Line - Visual Studio Code has a powerful command line interface that lets you control how you launch the editor. You can open different files, install extensions, and even change the display language at the startup.
 
 Command Palette - VS Code is equally accessible from the keyboard. The most important key combination to know is Ctrl+Shift+P, which brings up the Command Palette. From here, you would have access to all of the functionality of VS Code, including keyboard shortcuts for the most common operations.
@@ -24,7 +24,7 @@ Keyboard Shortcut: Ctrl+K M
 Split View - If you’re good at multitasking and if you are working on two different files of the same project simultaneously, or need to check the difference between two files then go to the split view.
 You can achieve the split view by selecting View > Editor Layout > Split Up
 
-8 Plugin of VS-Code
+#8 Plugin of VS-Code
 
 GitLens - GitLens simply helps you better understand code. Quickly glimpse into who changed a line or code block, why, and when. Jump back through history to gain further insights into how and why the code evolved. Effortlessly explore the history and evolution of a code base. It is powerful, feature-rich, and highly customizable to meet your needs.
 
