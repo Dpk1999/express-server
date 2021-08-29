@@ -1,9 +1,9 @@
-function createEquilateral(size){
-   for(var i=1;i<=size;i++){
-       for(var s=size-1;s>=i;s--){
+ createEquilateral=(size)=>{
+   for(let a=1;a<=size;a++){
+       for(let b=size-1;b>=a;b--){
           process.stdout.write(" ");
        }
-       for(var j=1;j<=i;j++){
+       for(let c=1;c<=a;c++){
           process.stdout.write("* ")
        }
        console.log();

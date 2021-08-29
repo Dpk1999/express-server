@@ -1,19 +1,19 @@
-function createDimondShape(size){
-  for(var i=1;i<=size;i++){
-     for(var s=size-1;s>=i;s--){
+ createDimondShape=(size)=>{
+  for(var a=1;a<=size;a++){
+     for(var b=size-1;b>=a;b--){
         process.stdout.write(" ");
      }
-     for(var j=1;j<=i;j++){
+     for(var c=1;c<=a;c++){
         process.stdout.write("* ")
      }
      console.log();
   }
-  if(i==size+1){
-     for(var i=1;i<=size-1;i++){
-        for(var s=1;s<=i;s++){
+  if(a==size+1){
+     for(var a=1;a<=size-1;a++){
+        for(var b=1;b<=a;b++){
            process.stdout.write(" ");
         }
-        for(j=i;j<=size-1;j++){
+        for(c=a;c<=size-1;c++){
            process.stdout.write("* ");
         }
         console.log();
@@ -22,3 +22,8 @@ function createDimondShape(size){
 }
 const size = process.argv.slice(2);
 createDimondShape(Number(size));
+
+
+
+
+
