@@ -15,7 +15,7 @@ const users = [     // Array of Objects, Objects contain email
     },
     ]
     
-    const validateEmail=(email)=>{
+    const validateEmail = (email) => {
         
         var validRegex = /^[a-zA-Z0-9.^]+@successive.tech/;
     
@@ -28,14 +28,14 @@ const users = [     // Array of Objects, Objects contain email
     var validUsers = []     // List of Valid users
     var invalidUsers = []   // List of Invalid users
     
-    const validateUsers=(users)=>{
+    const validateUsers = (users) =>{ 
     
         users.forEach(element => {
             const {traineeEmail} = element      // using destructing 
             const {reviewerEmail} = element     // using destructing
             
-            validateEmail(traineeEmail)==true?validUsers.push(traineeEmail):invalidUsers.push(traineeEmail)
-            validateEmail(reviewerEmail)==true?validUsers.push(reviewerEmail):invalidUsers.push(reviewerEmail)
+            validateEmail(traineeEmail) == true?validUsers.push(traineeEmail):invalidUsers.push(traineeEmail)
+            validateEmail(reviewerEmail) == true?validUsers.push(reviewerEmail):invalidUsers.push(reviewerEmail)
             }
         );
     }
