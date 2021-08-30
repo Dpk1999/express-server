@@ -1,13 +1,13 @@
- createEquilateral=(size)=>{
-   for(let a=1;a<=size;a++){
-       for(let b=size-1;b>=a;b--){
-          process.stdout.write(" ");
-       }
-       for(let c=1;c<=a;c++){
-          process.stdout.write("* ")
-       }
-       console.log();
-    }
-} 
+createEquilateral = (size) => {
+   for (let indexOne = 1; indexOne <= size; indexOne++) {
+      for (let indexTwo = size - 1; indexTwo >= indexOne; indexTwo--) {
+         process.stdout.write(" ");
+      }
+      for (let indexThree = 1; indexThree <= indexOne; indexThree++) {
+         process.stdout.write("* ")
+      }
+      console.log();
+   }
+}
 const size = process.argv.slice(2);
 createEquilateral(size);
