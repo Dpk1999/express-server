@@ -1,4 +1,4 @@
-createDimondShape = (size) => {
+const createDimondShape = (size) => {
    for (var indexOne = 1; indexOne <= size; indexOne++) {
       for (var indexTwo = size - 1; indexTwo >= indexOne; indexTwo--) {
          process.stdout.write(" ");

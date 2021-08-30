@@ -1,4 +1,4 @@
-createEquilateral = (size) => {
+const createEquilateral = (size) => {
    for (let indexOne = 1; indexOne <= size; indexOne++) {
       for (let indexTwo = size - 1; indexTwo >= indexOne; indexTwo--) {
          process.stdout.write(" ");
