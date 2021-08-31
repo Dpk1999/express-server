@@ -11,3 +11,5 @@ const createEquilateral = (size) => {
 }
 const size = process.argv.slice(2);
 createEquilateral(size);
+
+export default createEquilateral
