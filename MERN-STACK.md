@@ -28,4 +28,3 @@ Express.js (running on Node.js) and React.js make the JavaScript/JSON applicatio
 
 The combination means that JSON data flows naturally from front to back, making it fast to build on and reasonably simple to debug. Plus, you only have to know one programming language, and the JSON document structure, to understand the whole system!
 
-MERN is the stack of choice for today’s web developers looking to move quickly, particularly for those with React.js experience.
