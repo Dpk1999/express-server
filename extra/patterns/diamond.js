@@ -13,7 +13,7 @@ const createDimondShape = (size) => {
          for (let indexTwo = 1; indexTwo <= indexOne; indexTwo++) {
             process.stdout.write(" ");
          }
-         for (indexThree = indexOne; indexThree <= size - 1; indexThree++) {
+         for (let indexThree = indexOne; indexThree <= size - 1; indexThree++) {
             process.stdout.write("* ");
          }
          console.log();
