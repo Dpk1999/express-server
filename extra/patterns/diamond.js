@@ -1,4 +1,4 @@
-const createDimondShape = (size) => {
+const diamond = (size) => {
    for (let indexOne = 1; indexOne <= size; indexOne++) {
       for (let indexTwo = size - 1; indexTwo >= indexOne; indexTwo--) {
          process.stdout.write(" ");
@@ -21,9 +21,9 @@ const createDimondShape = (size) => {
 
 }
 const size = process.argv.slice(2);
-createDimondShape(Number(size));
+//diamond(Number(size));
 
 
-export default createDimondShape
+export default diamond
 
 

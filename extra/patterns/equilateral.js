@@ -1,4 +1,4 @@
-const createEquilateral = (size) => {
+const equilateral = (size) => {
    for (let indexOne = 1; indexOne <= size; indexOne++) {
       for (let indexTwo = size - 1; indexTwo >= indexOne; indexTwo--) {
          process.stdout.write(" ");
@@ -10,6 +10,6 @@ const createEquilateral = (size) => {
    }
 }
 const size = process.argv.slice(2);
-createEquilateral(size);
+//equilateral(size);
 
-export default createEquilateral
+export default equilateral;
