@@ -1,4 +1,6 @@
-permissions =
+
+const permissions =
+
 {
     'getUsers': {
         all: ['head-trainer'],
@@ -22,7 +24,13 @@ const hasPermission = (moduleName, role, permissionType) => {
     return found            // if not found, automatically return false
 }
 
+
+// console.log(hasPermission('getUsers', 'trainer', 'read'))
+
+export default hasPermission;
+
 console.log(hasPermission('getUsers', 'trainer', 'read'))
+
 
 /*
 

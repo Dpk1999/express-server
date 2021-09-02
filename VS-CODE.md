@@ -14,6 +14,7 @@ You can achieve the split view by selecting View > Editor Layout > Split Up.
 *GitLens* - GitLens simply helps you better understand code. Quickly glimpse into who changed a line or code block, why, and when. Jump back through history to gain further insights into how and why the code evolved. Effortlessly explore the history and evolution of a code base. It is powerful, feature-rich, and highly customizable to meet your needs.
 
 
+
 *VS Code Remote Development* - This extension provides seamless development in containers remotely on physical or virtual machines. You don’t need to run anything on the server. Just SSH to the machine using this extension.
 
  *Peacock* -  This extension will help you customize each project so you can have some visual feedback on what you are currently working on.
