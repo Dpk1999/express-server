@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Daily Task 39515",
   "main": "index.js",
-  "type": "module",
+  
   "scripts": {
     "start:extra": "babel-node extra",
     "start:extraTs": "tsc-watch --project . --onSuccess \"npm run nodemon\"",
