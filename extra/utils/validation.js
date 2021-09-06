@@ -31,15 +31,28 @@ const users = [     // Array of Objects, Objects contain email
     const validateUsers = (users) =>{ 
     
         users.forEach(element => {
+
             const traineeEmail = element.traineeEmail      // using destructing 
             const reviewerEmail = element.reviewerEmail     // using destructing
+
+            const {traineeEmail} = element      // using destructing 
+            const {reviewerEmail} = element     // using destructing
+
             
             validateEmail(traineeEmail) == true?validUsers.push(traineeEmail):invalidUsers.push(traineeEmail)
             validateEmail(reviewerEmail) == true?validUsers.push(reviewerEmail):invalidUsers.push(reviewerEmail)
             }
         );
+
         console.log();
     //  validateUsers(users)
+
+    }
+    
+    console.log();
+    validateUsers(users)
+    
+
     console.log('Valid users:')
     validUsers.forEach(element => {
         console.log(element)
@@ -54,10 +67,13 @@ const users = [     // Array of Objects, Objects contain email
     });
     console.log('Number of Invalid users: \n', invalidUsers.length)
 
+
     }
     
     
     export default validateUsers;
+
+
     
     /*
     
