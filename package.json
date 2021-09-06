@@ -3,11 +3,17 @@
   "version": "1.0.0",
   "description": "Daily Task 39515",
   "main": "index.js",
-  
-  "scripts": {
+"scripts": {
     "start:extra": "babel-node extra",
     "start:extraTs": "tsc-watch --project . --onSuccess \"npm run nodemon\"",
     "nodemon": "nodemon ./dist/src/index.js",
+
+  "scripts": {
+    "start":"npx babel-node extra",
+
+  "scripts": {
+
+
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +25,7 @@
   "bugs": {
     "url": "https://github.com/Dpk1999/express-server/issues"
   },
+
   "homepage": "https://github.com/Dpk1999/express-server#readme",
   "devDependencies": {
     "@babel/core": "^7.15.0",
@@ -42,4 +49,7 @@
     "express": "^4.17.1",
     "joi": "^17.4.2"
   }
+
+  "homepage": "https://github.com/Dpk1999/express-server#readme"
+
 }

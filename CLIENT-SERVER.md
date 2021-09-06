@@ -45,4 +45,3 @@ When we type a web address into our browser (for our analogy that's like walking
 -   The server parses the file according to the request handler. 
 4.  If the server approves the client's request, the server sends the client a "200 OK" message, which means "Of course you can look at that website! Here it is", and then starts sending the website's files to the browser as a series of small chunks called data packets (the shop gives us our goods, and we bring them back to our house).
 
-5.  The browser assembles the small chunks into a complete web page and displays it to you.
