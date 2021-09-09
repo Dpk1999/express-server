@@ -24,7 +24,7 @@
     },
     },
     "exclude": ["dist"],
-    "include": [
+    "include": ["extraTs","src"
 
     ],
     "types": ["src/types"]

@@ -5,18 +5,10 @@ const bodyParser = require("body-parser");
 const routes_1 = require("./libs/routes");
 const routes_2 = require("./routes");
 class Server {
-
-class Server {
-    /**
-     * This is Constructor
-     * @param config
-     */
-
     constructor(config) {
         this.config = config;
         this.app = express();
     }
-
     /**
      * This method use to set health-check route
      */
@@ -53,34 +45,7 @@ class Server {
                 console.log('Error in server setup');
             console.log(`app running on ${port} of ${env} successfully`);
         });
-
-    get application() {
-        return this.app;
-    }
-    /**
-     * To setupRoutes
-     */
-    setuproutes() {
-        this.app.get('/health-check', (req, res) => {
-            res.send("I am OK");
-        });
-    }
-    /**
-     * To bootstrap your app
-     * @returns
-     */
-    bootstrap() {
-        this.setuproutes;
-        return this;
-    }
-    run() {
-        const { port, env } = this.config;
-        this.app.listen(port, () => {
-            const message = `|| App is running at port '${port}' in '${env}' mode ||`;
-            console.log(message);
-        });
-        return this;
-
     }
 }
 exports.default = Server;
+//# sourceMappingURL=Server.js.map

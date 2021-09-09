@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const routes_1 = require("./routes");
-exports.default = routes_1.default;
+exports.default = void 0;
+var routes_1 = require("./routes");
+Object.defineProperty(exports, "default", { enumerable: true, get: function () { return routes_1.default; } });
 //# sourceMappingURL=index.js.map
