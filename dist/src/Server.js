@@ -1,8 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
+
 const bodyParser = require("body-parser");
 const routes_1 = require("./libs/routes");
+
 class Server {
     /**
      * This is Constructor
@@ -18,6 +20,7 @@ class Server {
     /**
      * To setupRoutes
      */
+
     setupRoutes() {
         this.app.get('/health-check', (req, res) => {
             res.send("I am OK");
@@ -38,6 +41,19 @@ class Server {
     bootstrap() {
         this.initBodyParser();
         this.setupRoutes();
+
+    setuproutes() {
+        this.app.get('/health-check', (req, res) => {
+            res.send("I am OK");
+        });
+    }
+    /**
+     * To bootstrap your app
+     * @returns
+     */
+    bootstrap() {
+        this.setuproutes;
+
         return this;
     }
     run() {
