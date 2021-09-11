@@ -11,6 +11,7 @@ const { value: envVars } = envVarsSchema.validate(process.env);
 const configuration = Object.freeze({
     env: envVars.NODE_ENV,
     port: envVars.PORT,
+    secret: envVars.TOKEN_SECRETE,
 });
 exports.default = configuration;
 //# sourceMappingURL=configuration.js.map

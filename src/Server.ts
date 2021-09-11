@@ -17,6 +17,7 @@ export default class Server {
             this.app.use('/api', router);
             this.app.use(routes.notFoundRoute);
             this.app.use(routes.errorHandler);
+            
     }
     initBodyParser() {
         // parse application/x-www-form-urlencoded
@@ -24,6 +25,10 @@ export default class Server {
 
         // parse application/json
         this.app.use(bodyParser.json());
+        
+        
+
+
     }
 
     /**

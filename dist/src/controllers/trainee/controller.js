@@ -1,5 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const jwt = require("jsonwebtoken");
+const configuration_1 = require("../../config/configuration");
 const trainee = [
     {
         id: 1,
@@ -73,6 +75,9 @@ class Trainee {
             return res.status(200).send({ message: 'deleted trainee successfully', data: deletedData });
         };
     }
+    read(read) {
+        throw new Error('Method not implemented.');
+    }
     get(req, res, next) {
         return res.status(200).send({ message: 'Fetched data Successfully', data: trainee });
     }
@@ -86,6 +91,11 @@ class Trainee {
         };
         trainee.push(trainees);
         return res.status(200).send({ message: 'trainee added sucessfully', data: trainee });
+    }
+    createToken(req, res, next) {
+        const token = jwt.sign(req.body, configuration_1.default.secret, { expiresIn: '10h' });
+        console.log(token);
+        res.status(200).send({ message: 'Token Succesfully Created', data: { token }, status: 'success' });
     }
 }
 exports.default = new Trainee();

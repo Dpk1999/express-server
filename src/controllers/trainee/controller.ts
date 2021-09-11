@@ -1,5 +1,8 @@
 import { Request, Response, Next } from 'express';
+import { body } from 'express-validator';
 import { request } from 'http';
+import * as jwt from 'jsonwebtoken';
+import config from '../../config/configuration'
 
 const trainee = [
     {
@@ -28,6 +31,9 @@ const trainee = [
     },
 ];
 class Trainee {
+    read(read: any): any {
+        throw new Error('Method not implemented.');
+    }
     get(req: Request, res: Response, next: Next) {
        
         return res.status(200).send({ message: 'Fetched data Successfully', data: trainee });
@@ -88,6 +94,11 @@ class Trainee {
             if (post.name !== requestName) return true;
         });
         return res.status(200).send({ message: 'deleted trainee successfully', data: deletedData });
+    }
+    createToken(req:Request, res:Response, next:Next){
+        const token = jwt.sign(req.body, config.secret, {expiresIn:'10h'});
+        console.log(token);
+        res.status(200).send({message: 'Token Succesfully Created', data: { token }, status: 'success'});
     }
 }
 

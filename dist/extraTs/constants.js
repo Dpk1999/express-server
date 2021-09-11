@@ -1,15 +1,22 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.users = exports.permissions = void 0;
-const permissions = {
-    'getUsers': {
-        all: ['head-trainer'],
-        read: ['trainee', 'trainer'],
-        write: ['trainer'],
-        delete: [],
-    }
+exports.users = exports.permissions = exports.BCRYPT_SALT_ROUNDS = exports.HEAD_TRAINER = exports.TRAINER = exports.USER = exports.TRAINEE = exports.trainees = void 0;
+exports.trainees = 'trainees';
+exports.TRAINEE = 'trainee';
+exports.USER = 'user';
+exports.TRAINER = 'trainer';
+exports.HEAD_TRAINER = 'head-trainer';
+exports.BCRYPT_SALT_ROUNDS = 10;
+exports.permissions = {
+    [exports.trainees]: {
+        read: [exports.TRAINEE, exports.TRAINER, exports.HEAD_TRAINER],
+        write: [exports.TRAINER, exports.HEAD_TRAINER],
+        delete: [exports.HEAD_TRAINER],
+    },
+    [exports.USER]: {
+        read: [exports.TRAINEE, exports.TRAINER, exports.HEAD_TRAINER],
+    },
 };
-exports.permissions = permissions;
 const users = [
     {
         traineeEmail: 'trainee1@successive.tech',
