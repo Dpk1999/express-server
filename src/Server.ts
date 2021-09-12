@@ -2,6 +2,7 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import routes from './libs/routes';
 import router from './routes';
+import Database from './libs/Database';
 export default class Server {
     app: express.Express;
     constructor(private config) {
@@ -14,10 +15,10 @@ export default class Server {
         this.app.get('/health-check', (req, res, next) => {
             res.send("'I am OK");
         });
-            this.app.use('/api', router);
-            this.app.use(routes.notFoundRoute);
-            this.app.use(routes.errorHandler);
-            
+        this.app.use('/api', router);
+        this.app.use(routes.notFoundRoute);
+        this.app.use(routes.errorHandler);
+
     }
     initBodyParser() {
         // parse application/x-www-form-urlencoded
@@ -25,8 +26,8 @@ export default class Server {
 
         // parse application/json
         this.app.use(bodyParser.json());
-        
-        
+
+
 
 
     }
@@ -44,11 +45,20 @@ export default class Server {
     /**
      * This method use to listen port
      */
-    run() {
-        const { port, env } = this.config;
-        this.app.listen(port, (err) => {
-            if (err) console.log('Error in server setup');
-            console.log(`app running on ${port} of ${env} successfully`);
-        });
+    public async run() {
+        const { port, env, mongoURI } = this.config;
+        try {
+            await Database.open(mongoURI);
+            this.app.listen(port, () => {
+                const message = `app running on '${port}' of '${env}' successfully`;
+                console.log(message);
+            });
+        }
+        catch (error) {
+            console.log('inside catch', error);
+
+        }
+        return this;
     }
+
 }

@@ -1,9 +1,19 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const bodyParser = require("body-parser");
 const routes_1 = require("./libs/routes");
 const routes_2 = require("./routes");
+const Database_1 = require("./libs/Database");
 class Server {
     constructor(config) {
         this.config = config;
@@ -39,11 +49,19 @@ class Server {
      * This method use to listen port
      */
     run() {
-        const { port, env } = this.config;
-        this.app.listen(port, (err) => {
-            if (err)
-                console.log('Error in server setup');
-            console.log(`app running on ${port} of ${env} successfully`);
+        return __awaiter(this, void 0, void 0, function* () {
+            const { port, env, mongoURI } = this.config;
+            try {
+                yield Database_1.default.open(mongoURI);
+                this.app.listen(port, () => {
+                    const message = `app running on '${port}' of '${env}' successfully`;
+                    console.log(message);
+                });
+            }
+            catch (error) {
+                console.log('inside catch', error);
+            }
+            return this;
         });
     }
 }

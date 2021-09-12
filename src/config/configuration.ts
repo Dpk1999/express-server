@@ -14,6 +14,7 @@ const configuration:IConfig = Object.freeze({
 	env: envVars.NODE_ENV,
 	port: envVars.PORT,
   secret: envVars.TOKEN_SECRETE,
+  mangoURI: envVars.MONGO_URL,
 });
 
 export default configuration;

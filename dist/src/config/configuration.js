@@ -12,6 +12,7 @@ const configuration = Object.freeze({
     env: envVars.NODE_ENV,
     port: envVars.PORT,
     secret: envVars.TOKEN_SECRETE,
+    mangoURI: envVars.MONGO_URL,
 });
 exports.default = configuration;
 //# sourceMappingURL=configuration.js.map
