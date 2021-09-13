@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const mangoose = require("mongoose");
+const seedData_1 = require("./seedData");
 class Database {
     static open(mongoURL) {
         return new Promise((resolve, reject) => {
@@ -10,6 +11,7 @@ class Database {
                     return reject(err);
                 }
                 console.log("Succesfully connected to Database", mongoURL);
+                (0, seedData_1.default)();
                 return resolve("Success");
             });
         });
