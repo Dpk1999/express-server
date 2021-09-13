@@ -1,6 +1,8 @@
 import { permissions } from "../constants"
 import { GetUsers } from "../interface";
 
+
+
 const hasPermission = (moduleName: string, role: string, permissionType: string): boolean => {
 
     let found: boolean;
@@ -9,8 +11,8 @@ const hasPermission = (moduleName: string, role: string, permissionType: string)
     const permission: string[] = obj[permissionType];      // fetching type of permission
     permission.forEach((element: string) => {     // iterating to check permission
         if (element === role) {
-                found = true;        // if role is found in 
-return found;
+            found = true;        // if role is found in 
+            return found;
         }
     });
 
