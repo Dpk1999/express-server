@@ -46,9 +46,9 @@ export default class Server {
      * This method use to listen port
      */
     public async run() {
-        const { port, env, mongoURI } = this.config;
+        const { port, env, mongoURL } = this.config;
         try {
-            await Database.open(mongoURI);
+            await Database.open(mongoURL);
             this.app.listen(port, () => {
                 const message = `app running on '${port}' of '${env}' successfully`;
                 console.log(message);

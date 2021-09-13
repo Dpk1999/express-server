@@ -50,9 +50,9 @@ class Server {
      */
     run() {
         return __awaiter(this, void 0, void 0, function* () {
-            const { port, env, mongoURI } = this.config;
+            const { port, env, mongoURL } = this.config;
             try {
-                yield Database_1.default.open(mongoURI);
+                yield Database_1.default.open(mongoURL);
                 this.app.listen(port, () => {
                     const message = `app running on '${port}' of '${env}' successfully`;
                     console.log(message);

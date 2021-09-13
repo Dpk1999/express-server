@@ -2,19 +2,18 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const mangoose = require("mongoose");
 class Database {
-    static open(mongoURI) {
+    static open(mongoURL) {
         return new Promise((resolve, reject) => {
-            mangoose.connect(mongoURI, (err) => {
+            mangoose.connect(mongoURL, (err) => {
                 if (err) {
                     console.log("error", err);
                     return reject(err);
                 }
-                console.log("Succesfully connected to Database", mongoURI);
+                console.log("Succesfully connected to Database", mongoURL);
                 return resolve("Success");
             });
         });
     }
 }
 exports.default = Database;
-const openResopnse = Database.open("www.google.com");
 //# sourceMappingURL=Database.js.map

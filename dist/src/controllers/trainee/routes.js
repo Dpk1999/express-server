@@ -9,8 +9,8 @@ const constants_1 = require("../../../extraTs/constants");
 const router = (0, express_1.Router)();
 router.get('/', (0, authMiddleWare_1.default)(constants_1.trainees, 'read'), (0, validationHandler_1.default)(validation_1.default.get), controller_1.default.get);
 router.post('/', (0, authMiddleWare_1.default)(constants_1.trainees, 'write'), (0, validationHandler_1.default)(validation_1.default.create), controller_1.default.post);
-router.put('/:name', (0, authMiddleWare_1.default)(constants_1.trainees, 'write'), (0, validationHandler_1.default)(validation_1.default.update), controller_1.default.put);
-router.delete('/:name', (0, authMiddleWare_1.default)(constants_1.trainees, 'delete'), (0, validationHandler_1.default)(validation_1.default.delete), controller_1.default.delete);
+router.put('/:id', (0, authMiddleWare_1.default)(constants_1.trainees, 'write'), (0, validationHandler_1.default)(validation_1.default.update), controller_1.default.put);
+router.delete('/:id', (0, authMiddleWare_1.default)(constants_1.trainees, 'delete'), (0, validationHandler_1.default)(validation_1.default.delete), controller_1.default.delete);
 router.post('/createToken', controller_1.default.createToken);
 exports.default = router;
 //# sourceMappingURL=routes.js.map
