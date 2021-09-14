@@ -1,34 +1,21 @@
-import { EmailType, UserType } from './interface';
-const TRAINEES: string = 'trainees';
-const TRAINEE: string = 'trainee';
-const USER: string = 'user';
-const TRAINER: string = 'trainer';
-const HEAD_TRAINER: string = 'head-trainer';
-const permissions: UserType =
-{
-    'getUsers': {
-        all: ['head-trainer'],
-        read: ['trainee', 'trainer'],
-        write: ['trainer'],
-        delete: [],
-    }
-}
 
-const users: EmailType[] = [     // Array of Objects, Objects contain email
-    {
-        traineeEmail: 'trainee1@successive.tech',
-        reviewerEmail: 'reviewer1@successive.tech',
+import { PermissionsType } from './interface';
+
+export const trainees: string = 'trainees';
+export const TRAINEE: string = 'trainee';
+export const users: string = 'users';
+export const TRAINER: string = 'trainer';
+export const HEAD_TRAINER: string = 'head-trainer';
+
+const permissions: PermissionsType = {
+    trainees: {
+        read: [TRAINEE, TRAINER, HEAD_TRAINER],
+        write: [TRAINER, HEAD_TRAINER],
+        delete: [HEAD_TRAINER],
     },
-
-    {
-        traineeEmail: 'trainee2@gmail.com',
-        reviewerEmail: 'reviewer3@successive.tech',
+    users: {
+        read: [TRAINEE, TRAINER, HEAD_TRAINER],
     },
+};
 
-    {
-        traineeEmail: 'trainee3@successive.tech',
-        reviewerEmail: 'reviewer3@gmail.com',
-    },
-]
-
-export { permissions, users }
+export default permissions;
