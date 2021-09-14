@@ -1,5 +1,5 @@
 import * as mangoose from "mongoose";
-import seedData from './seedData';
+import seedData from "./seedData";
 export default class Database{
     public static open(mongoURL) {
         return new Promise((resolve, reject) => {
