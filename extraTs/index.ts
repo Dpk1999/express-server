@@ -12,4 +12,4 @@ equilateral(10);
 console.log("It is a boolean value True and False")
 console.log(hasPermission('getUsers', 'trainer', 'read'))
 console.log("To check the email is valid or not and it's count");
-//validateUsers(users);
+validateUsers;
