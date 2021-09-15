@@ -9,6 +9,5 @@ console.log("It is a equilateral pattern");
 (0, index_js_2.equilateral)(10);
 console.log("It is a boolean value True and False");
 console.log((0, index_js_3.hasPermission)('getUsers', 'trainer', 'read'));
-console.log("To check the email is valid or not and it's count");
-//validateUsers(users);
+console.log(index_js_3.validateUsers, "To check the email is valid or not and it's count");
 //# sourceMappingURL=index.js.map
