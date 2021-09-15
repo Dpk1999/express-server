@@ -1,6 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
+
+const bodyParser = require("body-parser");
+const routes_1 = require("./libs/routes");
+
 class Server {
     /**
      * This is Constructor
@@ -16,6 +20,28 @@ class Server {
     /**
      * To setupRoutes
      */
+
+    setupRoutes() {
+        this.app.get('/health-check', (req, res) => {
+            res.send("I am OK");
+        });
+        // use notFoundRoute middleware
+        this.app.use(routes_1.default.notFoundRoute);
+        // use errorHandler middleware
+        this.app.use(routes_1.default.errorHandler);
+    }
+    initBodyParser() {
+        this.app.use(bodyParser.urlencoded({ extended: false }));
+        this.app.use(bodyParser.json());
+    }
+    /**
+     * This Method use to set in initial route
+     * @returns
+     */
+    bootstrap() {
+        this.initBodyParser();
+        this.setupRoutes();
+
     setuproutes() {
         this.app.get('/health-check', (req, res) => {
             res.send("I am OK");
@@ -27,6 +53,7 @@ class Server {
      */
     bootstrap() {
         this.setuproutes;
+
         return this;
     }
     run() {
