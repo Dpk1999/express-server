@@ -4,12 +4,8 @@
   "description": "Daily Task 39515",
   "main": "index.js",
 
-"scripts": {
-    "start:extra": "babel-node extra",
-    "start:extraTs": "tsc-watch --project . --onSuccess \"npm run nodemon\"",
-    "nodemon": "nodemon ./dist/src/index.js",
 
-  "scripts": {
+"scripts": {
     "start:extra": "babel-node extra",
     "start:extraTs": "tsc-watch --project . --onSuccess \"npm run nodemon\"",
     "nodemon": "nodemon ./dist/src/index.js",
