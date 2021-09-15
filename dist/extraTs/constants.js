@@ -1,23 +1,23 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.users = exports.permissions = exports.BCRYPT_SALT_ROUNDS = exports.HEAD_TRAINER = exports.TRAINER = exports.user = exports.TRAINEE = exports.trainees = void 0;
+exports.USERS = exports.permissions = exports.BCRYPT_SALT_ROUNDS = exports.HEAD_TRAINER = exports.TRAINER = exports.users = exports.TRAINEE = exports.trainees = void 0;
 exports.trainees = 'trainees';
 exports.TRAINEE = 'trainee';
-exports.user = 'user';
+exports.users = 'users';
 exports.TRAINER = 'trainer';
 exports.HEAD_TRAINER = 'head-trainer';
 exports.BCRYPT_SALT_ROUNDS = 10;
 exports.permissions = {
-    [exports.trainees]: {
+    trainees: {
         read: [exports.TRAINEE, exports.TRAINER, exports.HEAD_TRAINER],
         write: [exports.TRAINER, exports.HEAD_TRAINER],
         delete: [exports.HEAD_TRAINER],
     },
-    [exports.user]: {
+    users: {
         read: [exports.TRAINEE, exports.TRAINER, exports.HEAD_TRAINER],
     },
 };
-const users = [
+const USERS = [
     {
         traineeEmail: 'trainee1@successive.tech',
         reviewerEmail: 'reviewer1@successive.tech',
@@ -31,5 +31,5 @@ const users = [
         reviewerEmail: 'reviewer3@gmail.com',
     },
 ];
-exports.users = users;
+exports.USERS = USERS;
 //# sourceMappingURL=constants.js.map

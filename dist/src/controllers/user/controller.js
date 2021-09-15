@@ -1,7 +1,17 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const jwt = require("jsonwebtoken");
 const configuration_1 = require("../../config/configuration");
+const authMiddleWare_1 = require("../../libs/routes/authMiddleWare");
 const user = [
     {
         id: 1,
@@ -83,7 +93,19 @@ class User {
         throw new Error('Method not implemented.');
     }
     get(req, res, next) {
-        return res.status(200).send({ message: 'Fetched data Successfully', data: user });
+        return __awaiter(this, void 0, void 0, function* () {
+            let user;
+            const token = req.header('Authorization');
+            const { secret } = configuration_1.default;
+            try {
+                user = jwt.verify(token, secret);
+                const userData = yield authMiddleWare_1.userRepository.findOne({ _id: user._id });
+                return res.status(200).send({ message: 'Fetched data Successfully', data: userData });
+            }
+            catch (error) {
+                return res.status(500).json({ message: 'error', error });
+            }
+        });
     }
     post(req, res, next) {
         console.log(req.body);
