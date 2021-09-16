@@ -13,7 +13,7 @@ const {value: envVars}=envVarsSchema.validate(process.env);
 const configuration:IConfig = Object.freeze({
 	env: envVars.NODE_ENV,
 	port: envVars.PORT,
-  secret: envVars.jwtSECRETE,
+  secret: envVars.jwtSECRET,
   mongoURL: envVars.MONGO_URL,
 });
 
