@@ -13,7 +13,10 @@ const {value: envVars}=envVarsSchema.validate(process.env);
 const configuration:IConfig = Object.freeze({
 	env: envVars.NODE_ENV,
 	port: envVars.PORT,
+<<<<<<< HEAD
   secret: envVars.TOKEN_SECRETE,
+=======
+>>>>>>> a38b3b1f69df5436779b9e99903ec3a8e6045dfe
 });
 
 export default configuration;

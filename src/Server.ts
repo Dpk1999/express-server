@@ -46,8 +46,8 @@ export default class Server {
      */
     run() {
         const { port, env } = this.config;
-        this.app.listen(port, (err) => {
-            if (err) console.log('Error in server setup');
+        this.app.listen(port, () => {
+            
             console.log(`app running on ${port} of ${env} successfully`);
         });
     }

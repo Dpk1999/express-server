@@ -1,6 +1,11 @@
 node_modules
 package-lock.json
+<<<<<<< HEAD
 .env
 dist
 
 
+=======
+dist
+.env
+>>>>>>> a38b3b1f69df5436779b9e99903ec3a8e6045dfe
