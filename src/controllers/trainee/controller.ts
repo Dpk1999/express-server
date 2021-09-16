@@ -1,7 +1,7 @@
-import { Request, Response, Next } from 'express';
+import { Request, Response, NextFunction } from 'express';
 
 class Trainee {
-    get(req: Request, res: Response, next: Next) {
+    get(req: Request, res: Response, next: NextFunction) {
         const trainee = [
             {
                 name: 'Deepak',
@@ -26,7 +26,7 @@ class Trainee {
         ];
         return res.status(200).send({ message: 'Fetched data Successfully', data: trainee });
     }
-    post(req: Request, res: Response, next: Next) {
+    post(req: Request, res: Response, next: NextFunction) {
         console.log(req.body);
         const { name, designation, location } = req.body;
         if (!name) {
