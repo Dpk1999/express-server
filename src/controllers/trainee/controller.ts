@@ -1,4 +1,4 @@
-import { Request, Response, Next } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import { request } from 'http';
 
 const trainee = [
@@ -28,11 +28,11 @@ const trainee = [
     },
 ];
 class Trainee {
-    get(req: Request, res: Response, next: Next) {
+    get(req: Request, res: Response, next: NextFunction) {
        
         return res.status(200).send({ message: 'Fetched data Successfully', data: trainee });
     }
-    post(req: Request, res: Response, next: Next) {
+    post(req: Request, res: Response, next: NextFunction) {
         console.log(req.body);
         const trainees ={
             id :req.body.id,
