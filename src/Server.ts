@@ -11,14 +11,9 @@ export default class Server{
      */
     constructor(private config:any){ 
         this.app = express();
-
     }
-
-    get application() {
-		return this.app;
-	}
     /**
-     * To setupRoutes
+     * This method use to set health-check route
      */
     setupRoutes(){
         this.app.get('/health-check',(req,res)=>{
@@ -29,6 +24,8 @@ export default class Server{
       // use errorHandler middleware
       this.app.use(routes.errorHandler);
 
+        // parse application/json
+        this.app.use(bodyParser.json());
     }
     initBodyParser() {
         this.app.use(bodyParser.urlencoded({ extended: false }));
@@ -63,3 +60,4 @@ export default class Server{
 
 
 
+  

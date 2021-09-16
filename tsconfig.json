@@ -24,12 +24,7 @@
     },
     },
     "exclude": ["dist"],
-    "include": [
-
-    "extraTs","src"
-
-    
-
+    "include": ["extraTs"
     ],
     "types": ["src/types"]
     }
