@@ -1,4 +1,4 @@
-import { Request, Response, Next } from 'express';
+import { Request, Response, NextFunction } from 'express';
 
 import * as jwt from 'jsonwebtoken';
 import config from '../../config/configuration'
@@ -34,7 +34,7 @@ class User {
     read(read: any): any {
         throw new Error('Method not implemented.');
     }
-    async get(req: Request, res: Response, next: Next) {
+    async get(req: Request, res: Response, next: NextFunction) {
         let user;
         const token = req.header('Authorization');
         const { secret } = config;
@@ -49,7 +49,7 @@ class User {
         
         
     }
-    post(req: Request, res: Response, next: Next) {
+    post(req: Request, res: Response, next: NextFunction) {
         console.log(req.body);
         const users ={
             id :req.body.id,
@@ -110,7 +110,7 @@ class User {
         });
         return res.status(200).send({ message: 'deleted user successfully', data: deletedData });
     }
-    createToken(req:Request, res:Response, next:Next){
+    createToken(req:Request, res:Response, next:NextFunction){
         const token = jwt.sign(req.body, config.secret, {expiresIn:'10h'});
         console.log(token);
         res.status(200).send({message: 'Token Succesfully Created', data: { token }, status: 'success'});

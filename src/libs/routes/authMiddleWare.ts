@@ -1,17 +1,17 @@
 import * as jwt from 'jsonwebtoken';
 import config from '../../config/configuration';
 import hasPermission from '../../../extraTs/utils/permissions';
-import { Request, Response, Nextfunction } from 'express';
+
 import UserRepository from '../../repositories/user/UserRepository';
 export  const userRepository: UserRepository = new UserRepository();
 export default (module: string, permissionType: string): any =>
   async (
-    request: Request,
-    response: Response,
-    next: Nextfunction
+    req,
+    res,
+    next
   ): Promise<void> => {
     // get authorization token from header
-    const token: string = request.header('Authorization');
+    const token: string = req.header('Authorization');
     // check if token is exits or not
     if (!token) {
       next({ error: 'Unauthorized', message: 'Token not found', status: 403 });
@@ -63,6 +63,6 @@ export default (module: string, permissionType: string): any =>
         status: 403,
       });
     }
-    request.user = user;
+    req.user = user;
     next();
   };
