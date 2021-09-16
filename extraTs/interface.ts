@@ -34,7 +34,6 @@ interface PermissionsType {
     };
   }
   
-  export { PermissionsType };
 
 
 export { EmailType, UserType, GetUsers, PermissionsType };
