@@ -2,11 +2,7 @@
 import { diamond } from "./patterns/index.js";
 import { equilateral } from "./patterns/index.js";
 import { hasPermission, validateUsers } from "./utils/index.js";
-<<<<<<< HEAD
-import { users } from "../extraTs/constants";
-=======
-import  { USERS } from "./constants";
->>>>>>> a38b3b1f69df5436779b9e99903ec3a8e6045dfe
+import { USERS } from "../extraTs/constants";
 
 
 console.log("It is a diamond pattern")

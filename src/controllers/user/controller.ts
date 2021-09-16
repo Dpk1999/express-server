@@ -1,4 +1,4 @@
-import { Request, Response, Next } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import { body } from 'express-validator';
 import { request } from 'http';
 import * as jwt from 'jsonwebtoken';
@@ -34,11 +34,11 @@ class User {
     read(read: any): any {
         throw new Error('Method not implemented.');
     }
-    get(req: Request, res: Response, next: Next) {
+    get(req: Request, res: Response, next: NextFunction) {
        
         return res.status(200).send({ message: 'Fetched data Successfully', data: user });
     }
-    post(req: Request, res: Response, next: Next) {
+    post(req: Request, res: Response, next: NextFunction) {
         console.log(req.body);
         const users ={
             id :req.body.id,
@@ -99,7 +99,7 @@ class User {
         });
         return res.status(200).send({ message: 'deleted user successfully', data: deletedData });
     }
-    createToken(req:Request, res:Response, next:Next){
+    createToken(req:Request, res:Response, next:NextFunction){
         const token = jwt.sign(req.body, config.secret, {expiresIn:'10h'});
         console.log(token);
         res.status(200).send({message: 'Token Succesfully Created', data: { token }, status: 'success'});
