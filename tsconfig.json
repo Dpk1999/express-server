@@ -24,8 +24,6 @@
     },
     },
     "exclude": ["dist"],
-    "include": ["extraTs","src"
-
-    ],
+    "include": ["extraTs","src" ],
     "types": ["src/types"]
     }
