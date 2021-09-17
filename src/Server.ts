@@ -2,6 +2,8 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import routes from './libs/routes';
 import router from './routes';
+
+
 export default class Server {
     app: express.Express;
     constructor(private config) {
@@ -30,7 +32,6 @@ export default class Server {
 
 
     }
-
     /**
      * This Method use to set in initial route
      * @returns
@@ -50,5 +51,15 @@ export default class Server {
             
             console.log(`app running on ${port} of ${env} successfully`);
         });
+
+        return this;
     }
+
+
+
+
 }
+
+
+
+
