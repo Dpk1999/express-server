@@ -31,7 +31,6 @@ export default class Server {
 
 
     }
-
     /**
      * This Method use to set in initial route
      * @returns
