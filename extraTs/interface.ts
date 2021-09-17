@@ -34,10 +34,6 @@ interface PermissionsType {
     };
   }
   
-<<<<<<< HEAD
-=======
-  
->>>>>>> 563d607727f21f7e1690650ad07339e2cf7849d6
 
 
 export { EmailType, UserType, GetUsers, PermissionsType };
