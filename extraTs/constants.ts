@@ -1,7 +1,11 @@
 import { EmailType, UserType } from './interface';
 export const trainees: string = 'trainees';
 export const TRAINEE: string = 'trainee';
+<<<<<<< HEAD
 export const USER: string = 'user';
+=======
+export const users: string = 'users';
+>>>>>>> 563d607727f21f7e1690650ad07339e2cf7849d6
 export const TRAINER: string = 'trainer';
 export const HEAD_TRAINER: string = 'head-trainer';
 export const BCRYPT_SALT_ROUNDS: number = 10;
@@ -12,7 +16,11 @@ export const permissions: any = {
         write : [TRAINER, HEAD_TRAINER],
         delete : [HEAD_TRAINER],
     },
+<<<<<<< HEAD
     [USER]: {
+=======
+    [users]: {
+>>>>>>> 563d607727f21f7e1690650ad07339e2cf7849d6
         read: [TRAINEE, TRAINER, HEAD_TRAINER],
     },
 }

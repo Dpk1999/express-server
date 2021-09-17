@@ -2,7 +2,12 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import routes from './libs/routes';
 import router from './routes';
+<<<<<<< HEAD
 import Database from './libs/Database';
+=======
+
+
+>>>>>>> 563d607727f21f7e1690650ad07339e2cf7849d6
 export default class Server {
     app: express.Express;
     constructor(private config) {
@@ -31,7 +36,6 @@ export default class Server {
 
 
     }
-
     /**
      * This Method use to set in initial route
      * @returns
@@ -45,6 +49,7 @@ export default class Server {
     /**
      * This method use to listen port
      */
+<<<<<<< HEAD
     public async run() {
         const { port, env, mongoURL } = this.config;
         try {
@@ -62,3 +67,23 @@ export default class Server {
     }
 
 }
+=======
+    run() {
+        const { port, env } = this.config;
+        this.app.listen(port, () => {
+            
+            console.log(`app running on ${port} of ${env} successfully`);
+        });
+
+        return this;
+    }
+
+
+
+
+}
+
+
+
+
+>>>>>>> 563d607727f21f7e1690650ad07339e2cf7849d6
