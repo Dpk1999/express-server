@@ -1,4 +1,3 @@
-
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import routes from './libs/routes';
@@ -7,33 +6,31 @@ import router from './routes';
 
 export default class Server {
     app: express.Express;
-
-    /**
-     * This is Constructor
-     * @param config 
-     */
-    constructor(private config: any) {
-
+    constructor(private config) {
         this.app = express();
     }
     /**
      * This method use to set health-check route
      */
     setupRoutes() {
-        this.app.get('/health-check', (req, res) => {
-            res.send("I am OK")
-        })
-        // use notFoundRoute middleware
-        this.app.use(routes.notFoundRoute);
-        // use errorHandler middleware
-        this.app.use(routes.errorHandler);
+        this.app.get('/health-check', (req, res, next) => {
+            res.send("'I am OK");
+        });
+            this.app.use('/api', router);
+            this.app.use(routes.notFoundRoute);
+            this.app.use(routes.errorHandler);
+            
+    }
+    initBodyParser() {
+        // parse application/x-www-form-urlencoded
+        this.app.use(bodyParser.urlencoded({ extended: false }));
 
         // parse application/json
         this.app.use(bodyParser.json());
-    }
-    initBodyParser() {
-        this.app.use(bodyParser.urlencoded({ extended: false }));
-        this.app.use(bodyParser.json());
+        
+        
+
+
     }
     /**
      * This Method use to set in initial route
@@ -45,12 +42,14 @@ export default class Server {
         return this;
     }
 
-
+    /**
+     * This method use to listen port
+     */
     run() {
         const { port, env } = this.config;
         this.app.listen(port, () => {
-            const message = `|| App is running at port '${port}' in '${env}' mode ||`;
-            console.log(message);
+            
+            console.log(`app running on ${port} of ${env} successfully`);
         });
 
         return this;

@@ -23,5 +23,18 @@ interface GetUsers {
 interface UserType {
     getUsers: GetUsers;
 }
+interface PermissionsType {
+    trainees: {
+      read: [string, string, string];
+      write: [string, string];
+      delete: [string];
+    };
+    users: {
+      read: [string, string, string];
+    };
+  }
+  
+  
+
 
 export { EmailType, UserType, GetUsers, PermissionsType };
