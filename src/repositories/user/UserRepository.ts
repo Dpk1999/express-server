@@ -6,10 +6,7 @@ export default class UserRepository extends VersionableRepository <IUserModel, m
     constructor() {
         super(userModel);
     }
-    public static createObejectId() {
-        return String(new mongoose.Types.ObjectId());
-    }
-
+    
     public findOne(query): mongoose.Query<mongoose.EnforceDocument<IUserModel, {}>, mongoose.EnforceDocument<IUserModel, {}>> {
         return super.findOne(query).lean();
     }

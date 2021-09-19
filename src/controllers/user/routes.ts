@@ -10,9 +10,9 @@ import { users } from '../../../extraTs/constants';
 const router = Router();
 
 router.get('/', authMiddleWare(users, 'read'),validationHandler(validation.get), UserRoutes.get);
-router.post('/', authMiddleWare(users, 'read'), validationHandler(validation.create), UserRoutes.post);
-router.put('/:id', authMiddleWare(users, 'read'), validationHandler(validation.update), UserRoutes.put);
-router.delete('/:id', authMiddleWare(users, 'read'), validationHandler(validation.delete), UserRoutes.delete);
+router.post('/', authMiddleWare(users, 'write'), validationHandler(validation.create), UserRoutes.post);
+router.put('/:id', authMiddleWare(users, 'write'), validationHandler(validation.update), UserRoutes.put);
+router.delete('/:id', authMiddleWare(users, 'delete'), validationHandler(validation.delete), UserRoutes.delete);
 router.post('/createToken', UserRoutes.createToken);
 export default router;
 
