@@ -1,31 +1,19 @@
 import { permissions } from './constant';
-/**
- * This function check whether users has permission to action [read,write,delete,all]
- * for module
- * @param {string} moduleName
- * @param {string} role
- * @param {string} permissionType
- * @returns
- */
-const hasPermission = (
-  moduleName: string,
-  role: string,
-  permissionType: string
-): boolean => {
-  try {
-      // Check wheather role has permission for specific module
-      if (permissions[moduleName][permissionType].includes(role)) {
-        console.log(
-          `${role} has permission to ${permissionType}  ${moduleName}`
-        );
-        return true;
-      } else {
-        console.log(
-          `${role} not has permission to ${permissionType}  ${moduleName}`
-        );
-      }
-  } catch (err) {
-    console.log('Error', err );
+
+const hasPermission = (modulename: string, role: string, permissionType: string) => {
+  const permission: any = permissions[modulename];
+  if (!permission || !permission[permissionType]) {
+    console.log(`${role} do not have permission to ${permissionType} permissions for the module ${modulename}`);
+    return false;
   }
+
+  if (!permission[permissionType].includes(role)) {
+    console.log(`${role} do not have permission to ${permissionType} permissions for the module ${modulename}`);
+    return false;
+  }
+  console.log(`${role} have permission to ${permissionType} permissions for the module ${modulename}`);
+  return true;
+
 };
+
 export default hasPermission;
