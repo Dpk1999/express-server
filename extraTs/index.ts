@@ -1,7 +1,7 @@
 
-import { diamond } from "./patterns/index.js";
-import { equilateral } from "./patterns/index.js";
-import { hasPermission, validateUsers } from "./utils/index.js";
+import { diamond, equilateral} from "./patterns";
+
+import { hasPermission, validateUsers } from "./utils";
 import { USERS } from "../extraTs/constants";
 
 
