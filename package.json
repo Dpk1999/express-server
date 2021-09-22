@@ -7,17 +7,12 @@
     
     "start:extra": "babel-node extra",
     "start:extraTs": "tsc-watch --project . --onSuccess \"npm run nodemon\"",
-<<<<<<< HEAD
     "nodemon": "nodemon ./dist/extraTs/index.ts",
     "lint": "./node_modules/tslint/bin/tslint -c tslint.json -p tsconfig.json --exclude 'node_modules/**/*.{j,t}s'",
     "lint:fix": "npm run lint --fix",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install",
     "commit":"cz"
-=======
-    "nodemon": "nodemon ./dist/src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
->>>>>>> 563d607727f21f7e1690650ad07339e2cf7849d6
   },
   "repository": {
     "type": "git",
@@ -51,11 +46,7 @@
     "express": "^4.17.1",
     "express-validator": "^6.12.1",
     "joi": "^17.4.2",
-<<<<<<< HEAD
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.5"
-=======
-    "jsonwebtoken": "^8.5.1"
->>>>>>> 563d607727f21f7e1690650ad07339e2cf7849d6
   }
 }
