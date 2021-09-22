@@ -13,9 +13,15 @@ class User {
     async get(req: Request, res: Response, next: NextFunction) {
         
         try {
-            
-            const userData = await userRepository.findOne({});
-            return res.status(200).send({ message: 'Fetched data Successfully', data: userData });
+            const limit = Math.abs(JSON.parse(req.query.limit as string));
+            const skip = Math.abs(JSON.parse(req.query.skip as string));
+            const sortByDate = { createdAt: req.query.sort };
+            const sortByName = { name: req.query.name };
+            const sortByEmail = { email: req.query.email };
+            const role = { role: 'trainee' };
+            const user = await userRepository.find({}).select(role).limit(limit).skip(skip).sort([[sortByDate], [sortByName], [sortByEmail]]);
+            const userData = await userRepository.count();
+            return res.status(200).send({ message: `Number of Users ${userData}` , data: user });
         } catch (error) {
             return res.status(500).json({ message: 'error', error });
         }
