@@ -3,6 +3,8 @@ import * as bodyParser from 'body-parser';
 import routes from './libs/routes';
 import router from './routes';
 import Database from './libs/Database';
+
+
 export default class Server {
     app: express.Express;
     constructor(private config) {
@@ -31,7 +33,6 @@ export default class Server {
 
 
     }
-
     /**
      * This Method use to set in initial route
      * @returns
