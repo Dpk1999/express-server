@@ -12,7 +12,7 @@ export const permissions: any = {
         write : [TRAINER, HEAD_TRAINER],
         delete : [HEAD_TRAINER],
     },
-    users: {
+    [users]: {
         read: [TRAINEE, TRAINER, HEAD_TRAINER],
     },
 }
