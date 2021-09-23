@@ -1,7 +1,7 @@
 import { EmailType, UserType } from './interface';
 export const trainees: string = 'trainees';
 export const TRAINEE: string = 'trainee';
-export const users: string = 'users';
+export const USER: string = 'user';
 export const TRAINER: string = 'trainer';
 export const HEAD_TRAINER: string = 'head-trainer';
 export const BCRYPT_SALT_ROUNDS: number = 10;
@@ -12,7 +12,7 @@ export const permissions: any = {
         write : [TRAINER, HEAD_TRAINER],
         delete : [HEAD_TRAINER],
     },
-    [users]: {
+    [USER]: {
         read: [TRAINEE, TRAINER, HEAD_TRAINER],
     },
 }
