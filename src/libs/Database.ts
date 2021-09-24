@@ -16,4 +16,10 @@ export default class Database{
 
         })
     }
+    public static disconnect() {
+        mangoose.disconnect((err) => {
+          if (!err) console.log('Disconnected from MongoDB.');
+        });
+      
+    }
 }

@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-
+import { body } from 'express-validator';
+import { request } from 'http';
 import * as jwt from 'jsonwebtoken';
 import config from '../../config/configuration'
 import { userRepository } from '../../libs/routes/authMiddleWare';
@@ -34,20 +35,9 @@ class User {
     read(read: any): any {
         throw new Error('Method not implemented.');
     }
-    async get(req: Request, res: Response, next: NextFunction) {
-        let user;
-        const token = req.header('Authorization');
-        const { secret } = config;
-        try {
-            user = jwt.verify(token, secret);
-            const userData = await userRepository.findOne({ _id: user._id });
-            return res.status(200).send({ message: 'Fetched data Successfully', data: userData });
-        } catch (error) {
-            return res.status(500).json({message:'error',error});
-        }
-        
-        
-        
+    get(req: Request, res: Response, next: NextFunction) {
+       
+        return res.status(200).send({ message: 'Fetched data Successfully', data: user });
     }
     post(req: Request, res: Response, next: NextFunction) {
         console.log(req.body);
