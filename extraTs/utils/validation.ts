@@ -1,11 +1,11 @@
-import { EmailType } from '../interface';
+import { IEmailType } from '../interface';
 import { validateEmail } from './helper';
 
 const validEmails: string[] = [];
 const invalidEmails: string[] = [];
 
 
-const validateUsers = (users: EmailType[]) => {
+const validateUsers = (users: IEmailType[]) => {
 
     users.map((user) => {
         const {traineeEmail, reviewerEmail} = user;
