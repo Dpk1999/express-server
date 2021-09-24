@@ -3,6 +3,7 @@ import { body } from 'express-validator';
 import { request } from 'http';
 import * as jwt from 'jsonwebtoken';
 import config from '../../config/configuration'
+import { userRepository } from '../../libs/routes/authMiddleWare';
 
 const user = [
     {

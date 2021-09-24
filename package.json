@@ -4,15 +4,15 @@
   "description": "Daily Task 39515",
   "main": "index.js",
   "scripts": {
-    
-    "start:extra": "babel-node extra",
-    "start:extraTs": "tsc-watch --project . --onSuccess \"npm run nodemon\"",
-    "nodemon": "nodemon ./dist/src/index.js",
+    "start:extraTs": "tsc-watch --project . --onSuccess \"npm run nodemon:extraTs\"",
+    "start:server": "tsc-watch --project . --onSuccess \"npm run nodemon:server\"",
+    "nodemon:extraTs": "nodemon ./dist/extraTs",
+    "nodemon:server": "nodemon ./dist/src",
     "lint": "./node_modules/tslint/bin/tslint -c tslint.json -p tsconfig.json --exclude 'node_modules/**/*.{j,t}s'",
     "lint:fix": "npm run lint --fix",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install",
-    "commit":"cz"
+    "commit": "cz"
   },
   "repository": {
     "type": "git",
