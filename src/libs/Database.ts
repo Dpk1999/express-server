@@ -1,5 +1,5 @@
 import * as mangoose from "mongoose";
-
+import seedData from "./seedData";
 export default class Database{
     public static open(mongoURL) {
         return new Promise((resolve, reject) => {
@@ -9,6 +9,8 @@ export default class Database{
                     return reject(err);
                 }
                 console.log("Succesfully connected to Database",mongoURL);
+                seedData();
+                
                 return resolve("Success");
             });
 

@@ -40,7 +40,6 @@ export default class Server {
         return this;
     }
 
-
     public async run() {
         const { port, env, mongoURL } = this.config;
         try {
