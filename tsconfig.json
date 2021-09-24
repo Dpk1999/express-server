@@ -11,8 +11,8 @@
         "allowSyntheticDefaultImports": true,
         "resolveJsonModule": true,
         "esModuleInterop": false,
-        "allowJs": true /* Allow javascript files to be compiled. */,
-        "checkJs": false /* Report errors in .js files. */,
+        "allowJs": true,
+        "checkJs": false,
         "sourceMap": true,
         "outDir": "./dist",
         "baseUrl": ".",
@@ -23,9 +23,14 @@
             ]
         },
     },
-    "exclude": ["dist"],
-    "include": ["extraTs","src"
-
+    "exclude": [
+        "dist"
     ],
-    "types": ["src/types"]
-    }
+    "include": [
+        "extraTs",
+        "src"
+    ],
+    "types": [
+        "src/types"
+    ]
+}
