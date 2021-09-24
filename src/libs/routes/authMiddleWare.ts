@@ -56,6 +56,7 @@ export default (module: string, permissionType: string): any =>
     }
     // check user has permission to access module or not
     if (!hasPermission(module, userData.role, permissionType)) {
+      
       next({
         error: 'Unauthorized',
         message: 'Permisssion Denied',
