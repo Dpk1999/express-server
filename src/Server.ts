@@ -3,6 +3,7 @@ import * as bodyParser from 'body-parser';
 import routes from './libs/routes';
 import router from './routes';
 import Database from './libs/Database';
+import Swagger from '../src/libs/Swagger'
 export default class Server {
     app: express.Express;
     constructor(private config) {
@@ -37,6 +38,7 @@ export default class Server {
      */
     bootstrap() {
         this.initBodyParser();
+        this.initSwagger();
         this.setupRoutes();
         return this;
     }
@@ -59,5 +61,20 @@ export default class Server {
         }
         return this;
     }
+    private initSwagger(){
+        const { swaggerDefinition, swaggerUrl } = this.config;
+    const swaggerSetup = new Swagger();
+
+    // JSON Route
+    this.app.use(`${ swaggerUrl }.json`, swaggerSetup.getRouter({ swaggerDefinition }));
+
+    // UI Route
+    const { serve, setup } = swaggerSetup.getUI(swaggerUrl);
+
+    this.app.use(swaggerUrl, serve, setup);
+
+    }
 
 }
+
+

@@ -3,6 +3,7 @@ interface IConfig{
     env:string;
     secret:string;
     mongoURL:string;
-    pass:string
+    pass:string;
+    swaggerUrl:string;
 }
 export{ IConfig }
