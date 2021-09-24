@@ -64,40 +64,12 @@ class User {
         const deleteData = await userRepository.delete(requestId)
         return res.status(200).send({ message: 'deleted user successfully', data: deleteData });
     }
-    createToken = async (request: Request, response: Response, next: NextFunction): Promise<Response> => {
-        const userRepository: UserRepository = new UserRepository();
-        try {
-          const { id , email, password } = request.body;
-          const user = await userRepository.findOne({ email });
-          let token;
-          if (user) {
-            const validatePassword = await bcrypt.compare(password, user.password);
-            console.log(user, '===', validatePassword);
-            if (validatePassword) {
-              token = jwt.sign({ _id: id, _email: email}, configuration.secret, { expiresIn: '15m' });
-            } else {
-              return response
-                .status(401)
-                .send({ message: 'Invalid Password' });
-            }
-          } else {
-            return response
-              .status(401)
-              .send({ message: 'User does not exist' });
-          }
-          return response
-            .status(200)
-            .send({
-              message: 'Token successfully created',
-              data: { token },
-              status: 'success',
-            });
-        } catch (error) {
-          return response
-            .status(400)
-            .json({ status: 'Bad Request', message: error });
-        }
-      };
+    createToken(req: Request, res: Response, next: NextFunction) {
+        const token = jwt.sign(req.body, configuration.secret, { expiresIn: '15m' });
+        console.log(token);
+        res.status(200).send({ message: 'Token Succesfully Created', data: { token }, status: 'success' });
+
+    }
 }
 
 export default new User();
