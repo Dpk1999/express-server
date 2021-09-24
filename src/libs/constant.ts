@@ -8,6 +8,7 @@ export const LIMIT = 10;
 export const SKIP = 0;
 
 
+
 export const permissions: any = {
     trainees: {
         read: [TRAINEE, TRAINER, HEAD_TRAINER],

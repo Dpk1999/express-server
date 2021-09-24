@@ -27,6 +27,7 @@ export default (module: string, permissionType: string): any =>
         status: 403,
       });
     }
+    console.log(user)
     // check user exits or not
     if (!user) {
       next({

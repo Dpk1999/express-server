@@ -38,6 +38,26 @@ export default Object.freeze({
           errorMessage: 'Limit is invalid',
       },
     },
+    getAll: {
+      skip: {
+          exists: false,
+          isInt: true,
+          default: 1,
+          in: ['query'],
+          toInt: true,
+          optional: true,
+          errorMessage: 'Skip is required',
+      },
+      limit: {
+          exists: false,
+          isInt: true,
+          default: 1,
+          in: ['query'],
+          toInt: true,
+          optional: true,
+          errorMessage: 'Limit is required',
+      }
+  },
     // UPDATE /api/trainee/update
     update: {
       id: {
