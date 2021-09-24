@@ -1,9 +1,9 @@
-interface EmailType {
+interface IEmailType {
     traineeEmail: string;
     reviewerEmail: string;
 
 }
-interface PermissionsType {
+interface IPermissionsType {
     trainees: {
         read: [string, string, string];
         write: [string, string];
@@ -13,17 +13,17 @@ interface PermissionsType {
         read: [string, string, string];
     };
 }
-interface GetUsers {
+interface IGetUsers {
     all: string[];
     read: string[];
     write: string[];
     delete: string[];
 }
 
-interface UserType {
-    getUsers: GetUsers;
+interface IUserType {
+    getUsers: IGetUsers;
 }
-interface PermissionsType {
+interface IPermissionsType {
     trainees: {
       read: [string, string, string];
       write: [string, string];
@@ -36,4 +36,4 @@ interface PermissionsType {
   
 
 
-export { EmailType, UserType, GetUsers, PermissionsType };
+export { IEmailType, IUserType, IGetUsers, IPermissionsType };
