@@ -24,7 +24,7 @@ export default class UserRepository extends VersionableRepository <IUserModel, m
     public update(data: any): Promise<IUserModel> {
         return super.update(data);
     }
-    public delete(filter, data: any) {
-        return super.softdelete(filter, data);
+    public delete(data: any) {
+        return super.softdelete(data);
     }
 }

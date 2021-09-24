@@ -44,9 +44,8 @@ export default class VersionableRepository<D extends mongoose.Document, M extend
         const previousRecord = await this.findOne({ originalId: data.originalId });
         console.log(previousRecord);
         if (previousRecord) {
-            await this.softdelete({ originalId: data.originalId, deletedAt: undefined }, { deletedAt: Date.now() });
-        } else {
-            return undefined;
+            await this.softdelete(data.originalId)
+            
         }
         const newData = { ...previousRecord, ...data };
         console.log(newData);
@@ -55,7 +54,10 @@ export default class VersionableRepository<D extends mongoose.Document, M extend
         const model = new this.model(newData);
         return model.save();
     }
-    protected softdelete(filter, data): mongoose.Query<any, mongoose.EnforceDocument<D, {}>> {
-         return this.model.updateOne(filter, data);
+    protected softdelete(data): mongoose.Query<any, mongoose.EnforceDocument<D, {}>> {
+        const oldData: object = { originalId: data, deleteAt: undefined };
+        const newData: object = { deletedAt: Date.now() };
+          return this.model.updateOne(oldData, newData);
     }
+   
 }
