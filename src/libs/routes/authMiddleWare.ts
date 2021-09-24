@@ -1,9 +1,8 @@
 import * as jwt from 'jsonwebtoken';
 import config from '../../config/configuration';
-import hasPermission from '../../../extraTs/utils/permissions';
-
+import hasPermission from '../../libs/hasPermission';
 import UserRepository from '../../repositories/user/UserRepository';
-export  const userRepository: UserRepository = new UserRepository();
+export const userRepository: UserRepository = new UserRepository();
 export default (module: string, permissionType: string): any =>
   async (
     req,
@@ -39,7 +38,7 @@ export default (module: string, permissionType: string): any =>
 
     let userData;
     try {
-     
+
       userData = await userRepository.findOne({ _id: user._id });
       if (!userData) {
         next({
@@ -57,6 +56,7 @@ export default (module: string, permissionType: string): any =>
     }
     // check user has permission to access module or not
     if (!hasPermission(module, userData.role, permissionType)) {
+      
       next({
         error: 'Unauthorized',
         message: 'Permisssion Denied',

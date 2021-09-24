@@ -2,16 +2,7 @@
 export default Object.freeze({
     // POST /api/trainee/create
     create: {
-      id: {
-        string: true,
-        exists: true,
-        isDecimal: {
-          errorMessage: 'Bad Id format',
-        },
-        in: ['body'],
-        errorMessage: 'Id is required',
-      },
-      name: {
+     name: {
         exists: true,
         isLength: {
           errorMessage: 'Name should be at least 3 characters.',

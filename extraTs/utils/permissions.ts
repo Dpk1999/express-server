@@ -1,20 +1,15 @@
 import { permissions } from "../constants"
+import { IGetUsers } from "../interface";
 
-
-const hasPermission = (moduleName: string, role: string, permissionType: string)=> {
-
-
-  const obj: any  = permissions[moduleName];
-  if (!obj || !obj[permissionType]) {
-    console.log(`${role} do not have permission to ${permissionType} permissions for the module ${moduleName}`);
+const hasPermission = (moduleName: string, role: string, permissionType: string): boolean => {
+  const obj: IGetUsers = permissions[moduleName];
+  const permission: string[] = obj[permissionType];
+  if (!obj || !permission) {
     return false;
   }
-
-  if (obj[permissionType].includes(role)) {
-    console.log(`${role} do not have permission to ${permissionType} permissions for the module ${moduleName}`);
+  if (permission.includes(role)) {
     return false;
   }
-  console.log(`${role} have permission to ${permissionType} permissions for the module ${moduleName}`);
   return true;
 }
 

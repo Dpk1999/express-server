@@ -1,31 +1,29 @@
 import { Request, Response, NextFunction } from 'express';
-import { body } from 'express-validator';
-import { request } from 'http';
 import * as jwt from 'jsonwebtoken';
 import config from '../../config/configuration'
 import { userRepository } from '../../libs/routes/authMiddleWare';
 
 const user = [
     {
-        id: 1,
+        _id: 1,
         name: 'Deepak',
         designation: 'Software Developer',
         location: 'Pune',
     },
     {
-        id:2,
+        _id: 2,
         name: 'Darshan',
         designation: 'Tester',
         location: 'Mumbai',
     },
     {
-        id:3,
+        _id: 3,
         name: 'Shreya',
         designation: 'frontend Developer',
         location: 'Noida',
     },
     {
-        id:4,
+        _id: 4,
         name: 'Siddhesh',
         designation: 'Backend Developer',
         location: 'Chennai',
@@ -35,75 +33,49 @@ class User {
     read(read: any): any {
         throw new Error('Method not implemented.');
     }
-    get(req: Request, res: Response, next: NextFunction) {
-       
-        return res.status(200).send({ message: 'Fetched data Successfully', data: user });
-    }
-    post(req: Request, res: Response, next: NextFunction) {
-        console.log(req.body);
-        const users ={
-            id :req.body.id,
-            name :req.body.name,
-            designation :req.body.designation,
-            location :req.body.location,
-
-
+    async get(req: Request, res: Response, next: NextFunction) {
+        let user;
+        const token = req.header('Authorization');
+        const { secret } = config;
+        try {
+            user = jwt.verify(token, secret);
+            const userData = await userRepository.findOne({ _id: user._id });
+            return res.status(200).send({ message: 'Fetched data Successfully', data: userData });
+        } catch (error) {
+            return res.status(500).json({ message: 'error', error });
         }
-        user.push(users);
-        return res.status(200).send({ message: 'user added sucessfully', data: user });
-    }
-    put = (req: Request, res: Response): any => {
-        const user = this.rawUserData();
 
-        const requestName = req.params.name;
 
-        const data = user.find((post, index) => {
-          if (post.name === requestName) return true;
-        });
-        data.designation = 'Associate Engineer';
-        return res.status(200).send({ message: 'Updated user successfully', data: user });
+
     }
-    rawUserData = () => {
-        const user = [
-            {
-                id:1,
-                name: 'Darshan',
-                designation: 'user',
-                location: 'Pune',
-            },
-            {
-                id:2,
-                name: 'Roshan',
-                designation: 'Tester',
-                location: 'Mumbai',
-            },
-            {
-                id:3,
-                name: 'Ashish',
-                designation: 'frontend Developer',
-                location: 'Noida',
-            },
-            {
-                id:4,
-                name: 'Darshani',
-                designation: 'Designer',
-                location: 'Chennai',
-            },
-        ];
-        return user;
+    async post(req: Request, res: Response, next: NextFunction) {
+        console.log(req.body);
+        const users = {
+            name: req.body.name,
+            email: req.body.email,
+            role: req.body.role,
+            password: req.body.password,
+        }
+        const userData = await userRepository.create(users);
+        return res.status(200).send({ message: 'user added sucessfully', data: userData });
     }
-    delete = (req: Request, res: Response) => {
-        const user = this.rawUserData();
-        const requestName = req.params.name;
-        const deletedData = this.rawUserData().filter((post, index) => {
-            if (post.name !== requestName) return true;
-        });
-        return res.status(200).send({ message: 'deleted user successfully', data: deletedData });
+    put = async (req: Request, res: Response) => {
+        const  _id  = req.params._id 
+        const { name, email } = req.body;
+        const userData = await userRepository.update({ originalId: _id, name: name, email: email });
+
+        return res.status(200).send({ message: 'Updated user successfully', data: userData });
     }
-    createToken(req:Request, res:Response, next:NextFunction){
-        const token = jwt.sign(req.body, config.secret, {expiresIn:'10h'});
+    delete = async (req: Request, res: Response) => {
+        const requestId = req.params._id;
+        const deleteData = await userRepository.delete(requestId)
+        return res.status(200).send({ message: 'deleted user successfully', data: deleteData });
+    }
+    createToken(req: Request, res: Response, next: NextFunction) {
+        const token = jwt.sign(req.body, config.secret, { expiresIn: '10h' });
         console.log(token);
-        res.status(200).send({message: 'Token Succesfully Created', data: { token }, status: 'success'});
+        res.status(200).send({ message: 'Token Succesfully Created', data: { token }, status: 'success' });
+
     }
 }
 
