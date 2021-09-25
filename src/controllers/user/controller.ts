@@ -6,10 +6,7 @@ import * as bcrypt from 'bcrypt'
 import { BCRYPT_SALT_ROUNDS } from '../../libs/constant';
 import UserRepository from '../../repositories/user/UserRepository';
 import { TRAINEE, LIMIT, SKIP } from '../../libs/constant';
-
-
 class User {
-
     async get(req: Request, res: Response, next: NextFunction) {
 
         try {
@@ -19,19 +16,21 @@ class User {
         } catch (error) {
             return res.status(500).json({ message: 'error', error });
         }
-
-
-
     }
 
-    async getAll(request: Request, response: Response){
+    async getAll(request: Request, response: Response) {
         const userRepository: UserRepository = new UserRepository();
         try {
-            const { skip = SKIP, limit = LIMIT, sort = { createdAt: -1 } } = request.query;
+            const { search, skip = SKIP, limit = LIMIT, sort = { createdAt: -1 } } = request.query;
             console.log({ skip, limit, sort });
-            console.log(TRAINEE);
-            
-            const _result = await userRepository.find({ role: TRAINEE }, undefined, { skip, limit, sort });
+            const query: any = {
+                role: TRAINEE,
+                $or: [
+                    { name: { $regex: new RegExp(search as string), $options: 'i' } },
+                    { email: { $regex: new RegExp(search as string), $options: 'i' } }
+                ]
+            };
+            const _result = await userRepository.find(query, undefined, { skip, limit, sort });
             const _count = await userRepository.count();
             const _data = [{ count: _count, result: _result }];
             return response
@@ -46,14 +45,14 @@ class User {
 
     async post(req: Request, res: Response, next: NextFunction) {
         console.log(req.body);
-        const{name, email, role, password } = req.body
+        const { name, email, role, password } = req.body
         const hash = await bcrypt.hash(password, BCRYPT_SALT_ROUNDS)
-        const userdata = { name, email, role, password:hash}
+        const userdata = { name, email, role, password: hash }
         const user = await userRepository.create(userdata);
         return res.status(200).send({ message: 'user added sucessfully', data: user });
     }
     put = async (req: Request, res: Response) => {
-        const  _id  = req.params._id 
+        const _id = req.params._id
         const { name, email } = req.body;
         const userData = await userRepository.update({ originalId: _id, name: name, email: email });
 

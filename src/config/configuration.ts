@@ -31,13 +31,26 @@ const configuration:IConfig = Object.freeze({
   mongoURL: envVars.MONGO_URL,
   pass:envVars.PASSWORD,
   swaggerDefinition: {
-    basePath: '/api',
-    info: {
-      ...ABOUT,
+    openapi: '3.0.0',
+    servers: [{url: 'http://localhost:9000/api/'}],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        }
+      }
+    },
+    security: [{
+      bearerAuth: []
+    }],
+  info: {
+   ...ABOUT,
       version,
     },
   },
-  swaggerUrl: SWAGGER_URL,
+swaggerUrl: SWAGGER_URL,
 });
 
 export default configuration;
