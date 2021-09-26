@@ -109,6 +109,8 @@ router.post('/', authMiddleWare(users, 'write'), validationHandler(validation.cr
  *             required:
  *              -email
  *             properties:
+ *               name:
+ *                type: string
  *               email:
  *                type: string
  *               role:

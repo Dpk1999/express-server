@@ -1,3 +1,4 @@
+import { string } from 'joi';
 import * as jwt from 'jsonwebtoken';
 import config from '../../config/configuration';
 import hasPermission from '../../libs/hasPermission';
@@ -10,7 +11,10 @@ export default (module: string, permissionType: string): any =>
     next
   ): Promise<void> => {
     // get authorization token from header
-    const token: string = req.header('Authorization');
+    let token: string = req.header('Authorization');
+    if (token.startsWith('Bearer ')) {
+      token = token.substring(7, token.length);
+    }
     // check if token is exits or not
     if (!token) {
       next({ error: 'Unauthorized', message: 'Token not found', status: 403 });
