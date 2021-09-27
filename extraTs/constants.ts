@@ -17,7 +17,7 @@ export const permissions: any = {
     },
 }
 
-const USERS: IEmailType[] = [     // Array of Objects, Objects contain email
+const USERS: IEmailType[] = [    
     {
         traineeEmail: 'trainee1@successive.tech',
         reviewerEmail: 'reviewer1@successive.tech',

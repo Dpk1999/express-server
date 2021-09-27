@@ -7,7 +7,7 @@
     "start:extraTs": "tsc-watch --project . --onSuccess \"npm run nodemon:extraTs\"",
     "start:server": "tsc-watch --project . --onSuccess \"npm run nodemon:server\"",
     "nodemon:extraTs": "nodemon ./dist/extraTs",
-    "nodemon:server": "nodemon ./dist/src",
+    "nodemon:server": "nodemon ./dist/src/index.js",
     "lint": "./node_modules/tslint/bin/tslint -c tslint.json -p tsconfig.json --exclude 'node_modules/**/*.{j,t}s'",
     "lint:fix": "npm run lint --fix",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -43,12 +43,15 @@
     "@hapi/joi": "^17.1.1",
     "@types/react-router": "^4.0.11",
     "@types/react-router-dom": "^4.0.4",
+    "bcrypt": "^5.0.1",
     "conekta-react-native": "^0.3.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-validator": "^6.12.1",
     "joi": "^17.4.2",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.0.5"
+    "mongoose": "^6.0.5",
+    "swagger-jsdoc": "^6.1.0",
+    "swagger-ui-express": "^4.1.6"
   }
 }
