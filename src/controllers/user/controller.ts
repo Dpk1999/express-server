@@ -32,7 +32,12 @@ class User {
             };
             const _result = await userRepository.find(query, undefined, { skip, limit, sort });
             const _count = await userRepository.count();
-            const _data = [{ count: _count, result: _result }];
+            const _data = [{ totalNoOfRecords: _count, count: _result.length, result: _result }];
+            if (_result.length === 0) {
+                return response
+                    .status(404)
+                    .send({ message: 'Not found User' });
+            }
             return response
                 .status(200)
                 .send({ message: 'Fetched data successfully', data: _data });

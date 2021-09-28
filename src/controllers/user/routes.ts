@@ -11,33 +11,35 @@ const router = Router();
 /**
  * @swagger
  * /user:
- *  get:
- *   security:
- *    - bearerAuth: []
- *   tags:
- *    - users
- *   description: Returns all the users
- *   responses:
- *     200:
- *      description: Array of user
- *      content:
- *        application/json:
- *         schema:
- *           properties:
- *            id:
- *              type: string
- *            originalId:
- *              type: string
- *            name:
- *              type: string
- *            email:
- *              type: string
- *            role:
- *              type: string
- *            createdAt:
- *              type: string
- *            deletedAt:
- *              type: string
+ *   get:
+ *        tags: [USER]
+ *        description: Returns all the user
+ *        parameters:
+ *         - in: query
+ *           name: skip
+ *           schema:
+ *            type: string
+ *         - in: query
+ *           name: limit
+ *           schema:
+ *            type: string
+ *         - in: query
+ *           name: sort
+ *           schema:
+ *            type: string
+ *           description: sort by email or name
+ *         - in: query
+ *           name: search
+ *           schema:
+ *            type: string
+ *           description: search by email or name
+ *        security:
+ *             - bearerAuth: []
+ *        responses :
+ *             200:
+ *                  description: Array of user
+ *                  schema:
+ *                       $ref: '#/definitions/UserListResponse'
  */
 
 router.get('/', authMiddleWare(users, 'read'), validationHandler(validation.getAll), UserRoutes.getAll);
