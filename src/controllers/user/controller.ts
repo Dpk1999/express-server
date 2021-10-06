@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import * as jwt from 'jsonwebtoken';
 import configuration from '../../config/configuration'
-import { userRepository } from '../../libs/routes/authMiddleWare';
+import  { userRepository } from '../../libs/routes/authMiddleWare';
 import * as bcrypt from 'bcrypt'
 import { BCRYPT_SALT_ROUNDS } from '../../libs/constant';
 import UserRepository from '../../repositories/user/UserRepository';

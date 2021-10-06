@@ -1,73 +1,39 @@
-import { string } from 'joi';
 import * as jwt from 'jsonwebtoken';
-import config from '../../config/configuration';
-import hasPermission from '../../libs/hasPermission';
 import UserRepository from '../../repositories/user/UserRepository';
+import  configuration  from '../../config/configuration';
+import hasPermission from '../hasPermission';
+import ReviewerRepository from '../../repositories/reviewer/ReviwerRepository';
+
 export const userRepository: UserRepository = new UserRepository();
-export default (module: string, permissionType: string): any =>
-  async (
-    req,
-    res,
-    next
-  ): Promise<void> => {
-    // get authorization token from header
-    let token: string = req.header('Authorization');
-    if (token.startsWith('Bearer ')) {
-      token = token.substring(7, token.length);
-    }
-    // check if token is exits or not
-    if (!token) {
-      next({ error: 'Unauthorized', message: 'Token not found', status: 403 });
-    }
-    // verify token
-    let user;
-    try {
-      const { secret } = config;
-      user = jwt.verify(token, secret);
-    } catch (err) {
-      next({
-        error: 'Unauthorized',
-        message: 'User not Authorized',
-        status: 403,
-      });
-    }
-    console.log(user)
-    // check user exits or not
-    if (!user) {
-      next({
-        error: 'Unauthorized',
-        message: 'User not Authorized',
-        status: 403,
-      });
-    }
+const reviewerRepository: ReviewerRepository = new ReviewerRepository();
 
-    let userData;
-    try {
+export default (modulename: string, permissionType: string) => async (req, res, next) => {
+  const token: string = req.header('Authorization');
 
-      userData = await userRepository.findOne({ _id: user._id });
-      if (!userData) {
-        next({
-          error: 'Unauthorized',
-          message: 'User not Authorized',
-          status: 403,
-        });
-      }
-    } catch (err) {
-      next({
-        error: 'Bad Request',
-        message: err.message,
-        status: 400,
-      });
-    }
-    // check user has permission to access module or not
-    if (!hasPermission(module, userData.role, permissionType)) {
-      
-      next({
-        error: 'Unauthorized',
-        message: 'Permisssion Denied',
-        status: 403,
-      });
-    }
-    req.user = user;
-    next();
-  };
+  if (!token) {
+    next({ error: 'Unauthorized', message: 'Token not found', status: 403 });
+  }
+
+  // User
+  let user: any;
+  try {
+    user = jwt.verify(token, configuration.secret);
+  }
+  catch (err) {
+    next({ error: 'Unauthorized', message: 'User not Authorized', status: 403 });
+  }
+  console.log('User is', user);
+
+  if (!user) {
+    next({ error: 'Unauthorized', message: 'User not Authorized', status: 403 });
+  }
+
+  if (!hasPermission(modulename, user.role, permissionType)) {
+    next({ error: 'Unauthorized', message: 'Admin Resources! Permission Denied.', status: 403});
+  }
+
+  req.user = user;
+  next();
+
+};
+

@@ -55,7 +55,7 @@ export default class VersionableRepository<D extends mongoose.Document, M extend
         return model.save();
     }
     protected softdelete(data): mongoose.Query<any, mongoose.EnforceDocument<D, {}>> {
-        const oldData: object = { originalId: data, deleteAt: undefined };
+        const oldData: object = { deleteAt: undefined };
         const newData: object = { deletedAt: Date.now() };
           return this.model.updateOne(oldData, newData);
     }
